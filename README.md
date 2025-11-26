@@ -1,11 +1,11 @@
 #PRECISE Documentation Suite
----
+
 ##PRECISE: PREdicting CIrcadian phase from Stochastic gene Expression
 
 PRECISE is an R-based supervised machine learning algorithm that is designed to accurately infer the circadian phase from RNA measurements of a test sample. The associated paper can be found here:
 The RNA measurements could be from any experimental method, for example bulk/single-cell RNA-seq, qPCR, etc.  PRECISE builds on Gaussian Processes (GPs) to learn noisy and non-stationary oscillatory trajectories. 
 This repository provides the R scripts and functions required for running PRECISE on different datasets. The R script has a modular design where each step (data input, normalization, bootstrapping, likelihood estimation and testing) are available as separate modules in the R script. 
----
+
 ##Installation
 If not already installed, R can be downloaded from the [CRAN](https://cran.r-project.org) homepage. RStudio is available for download in this [link](https://posit.co/products/open-source/rstudio/?sid=1). A detailed documentation to installation of both R and RStudio can be found at this [webpage](https://rstudio-education.github.io/hopr/starting.html). 
 PRECISE requires **manual installation of ODeGP from a local folder** supplied to the user.
@@ -25,7 +25,7 @@ You should see ODeGP listed among the loaded packages.
 ###4. The PRECISE scripts
 This repository contains two scripts, `PRECISE_validation.R` and `PRECISE_prediction.R`. The first can be used to reproduce Figures 3 and 4 in the main text while the second can be used for predicting phase of unknown samples.  
  
----
+
 ##Instructions for running PRECISE validation
 
 ###Input data structure required for running `PRECISE_validation.R`
@@ -44,7 +44,7 @@ Represents the field of view (FOV) and the cell number (e.g., "001_10" = FOV 001
 •	**Area_Cell**
 The area of the cell in pixels (corresponding to the segmentation mask)
 These columns are **not required** to run `PRECISE_validation.R`. They are included because the manuscript analyzes the effect of cell area; they are provided for completeness but can be ignored for running PRECISE.
---- 
+
 ###Example
 The various datasets required for implementation of `PRECISE_validation.R` are provided in the docs folder.
 It includes the following files:
@@ -60,6 +60,7 @@ Before running the script :
 3.	Name the files according to their timepoints (for example, 08_final.csv, 16_final.csv, and so on until the last timepoint). Using this naming convention ensures that the files are read in the correct chronological order, which is important because the code relies on index-based access at several steps.
 After setting up the folders, update the relevant file paths in the code and run the `PRECISE_validation.R` script. Upon completion, the script will generate a set of graphs — one for each test timepoint analyzed — showing how the PRECISE-inferred phase deviates from the true phase (estimated using wavelet analysis) as a function of the number of cells averaged per sample, starting from single-cell measurements.
  
+
 
 
 
